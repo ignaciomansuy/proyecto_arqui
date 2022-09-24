@@ -15,7 +15,7 @@ architecture Behavioral of ALU is
 
 component Adder16 is
     Port ( a  : in  std_logic_vector (15 downto 0);
-           b  : in  std_logic_vector (14 downto 0);
+           b  : in  std_logic_vector (15 downto 0);
            ci : in  std_logic;
            s  : out std_logic_vector (15 downto 0);
            co : out std_logic);

@@ -151,3 +151,7 @@ typeControlKey((HResource) null, "ALU.vhd", 'v'); // ch (w, cr)
 // TclEventType: FILE_SET_CHANGE
 // [GUI Memory]: 123 MB (+2104kb) [00:01:43]
 expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Basys3(Behavioral) (Basys3.vhd), inst_ALU : ALU(Behavioral) (ALU.vhd)]", 4); // B (F, cr)
+// Elapsed time: 64 seconds
+selectCodeEditor("ALU.vhd", 358, 368); // ch (w, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
