@@ -1,8 +1,8 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Tue Sep 13 16:40:25 2022
-| Host         : Lab1sa_10 running 64-bit major release  (build 9200)
+| Date         : Sat Sep 24 17:04:03 2022
+| Host         : LAPTOP-SOH0AB6R running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Basys3_control_sets_placed.rpt
 | Design       : Basys3
 | Device       : xc7a35t

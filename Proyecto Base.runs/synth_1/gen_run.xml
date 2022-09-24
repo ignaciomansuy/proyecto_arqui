@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1663097963">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1664049768">
   <File Type="PA-TCL" Name="Basys3.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Basys3_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Basys3_reports.tcl"/>

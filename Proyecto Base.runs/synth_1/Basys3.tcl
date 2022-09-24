@@ -17,27 +17,25 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.xpr} [current_project]
+set_property webtalk.parent_dir {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_cache_permissions disable [current_project]
 read_vhdl -library xil_defaultlib {
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/ALU.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Adder8.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Debouncer.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Display_Controller.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/FA.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/HA.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Reg.vhd}
-  {C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Basys3.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/ALU.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Adder8.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Debouncer.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Display_Controller.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/FA.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/HA.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Reg.vhd}
+  {C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/sources_1/new/Basys3.vhd}
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -47,8 +45,8 @@ read_vhdl -library xil_defaultlib {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/constrs_1/new/Basys3.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/iic2343/Downloads/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/constrs_1/new/Basys3.xdc}}]
+read_xdc {{C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/constrs_1/new/Basys3.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/ignac/OneDrive/Documentos/U. Catolica/8vo semestre/ArquiComp/Proyecto Base Actividad 2/Proyecto Base Actividad 2/Proyecto Base.srcs/constrs_1/new/Basys3.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
