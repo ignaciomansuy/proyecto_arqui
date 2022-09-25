@@ -59,7 +59,7 @@ with sop select
                   a xor b          when "100",
                   not a            when "101",
                   '0' & a(15 downto 1)  when "110",
-                  a(7 downto 0) & '0'  when "111",
+                  a(14 downto 0) & '0'  when "111",
                   "0000000000000000" when others;
                   
 result  <= alu_result;
