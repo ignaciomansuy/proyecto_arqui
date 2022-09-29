@@ -59,6 +59,17 @@ component ALU -- No Tocar
         result      : out   std_logic_vector (7 downto 0)
           );
     end component;
+    
+component Mux 
+    Port ( 
+        datain0 : in STD_LOGIC_VECTOR (15 downto 0);
+        datain1 : in STD_LOGIC_VECTOR (15 downto 0);
+        datain2 : in STD_LOGIC_VECTOR (15 downto 0);
+        datain3 : in STD_LOGIC_VECTOR (15 downto 0);
+        sel : in STD_LOGIC_VECTOR (1 downto 0);
+        dataout : out STD_LOGIC_VECTOR (15 downto 0)
+);
+end component;
 
 -- Fin de la declaración de los componentes.
 
@@ -71,13 +82,18 @@ signal dis_b            : std_logic_vector(3 downto 0);  -- Señales de salida al
 signal dis_c            : std_logic_vector(3 downto 0);  -- Señales de salida al display C.    
 signal dis_d            : std_logic_vector(3 downto 0);  -- Señales de salida al display D.
      
-signal a                : std_logic_vector(7 downto 0);  -- Señales del primer operador.    
-signal b                : std_logic_vector(7 downto 0);  -- Señales del segundo operador.  
+signal a                : std_logic_vector(15 downto 0);  -- Señal primer operador    
+signal b                : std_logic_vector(15 downto 0);  -- Señal segundo operador.     
+
+signal dataOutRegA                : std_logic_vector(7 downto 0);  -- Señal salida Reg A.    
+signal dataOutRegB                : std_logic_vector(7 downto 0);  -- Señal salida Reg B.  
 
 signal result           : std_logic_vector(7 downto 0);  -- Señales del resultado.
 
 signal datain           : std_logic_vector(7 downto 0);  -- Señales de datos de entrada a los registros.
 
+signal datainMuxA           : std_logic_vector(15 downto 0);
+signal datainMuxB           : std_logic_vector(15 downto 0);
 
 -- Fin de la declaración de señales.
 
@@ -86,9 +102,9 @@ begin
 -- Inicio de declaración de comportamientos.
 
 -- Muxer Regs
-with sw(12) select
-    datain <= result            when '0',
-              sw(7 downto 0)    when others;
+-- with sw(12) select
+--    datain <= result            when '0',
+--              sw(7 downto 0)    when others;
 
 -- Muxers del Display
 with btn(0) select
@@ -110,8 +126,6 @@ with btn(0) select
 
 -- Inicio de declaración de instancias.
 
-
-
 inst_REG_A: Reg port map( -- Repárame!
     clock       => d_btn(2),
     clear       => '0',
@@ -119,7 +133,7 @@ inst_REG_A: Reg port map( -- Repárame!
     up          => '0',
     down        => '0',
     datain      => datain,
-    dataout     => a
+    dataout     => dataOutRegA
     );
     
 inst_REG_B: Reg port map( -- Repárame!
@@ -129,8 +143,26 @@ inst_REG_B: Reg port map( -- Repárame!
     up          => '0',
     down        => '0',
     datain      => datain,
-    dataout     => b
+    dataout     => dataOutRegB
     );
+    
+ inst_Mux_A: Mux port map(
+    datain0 => "0000000000000000",
+    datain1 => "0000000000000001",
+    datain2 => dataOutRegA,
+    datain3 => "0000000000000000", -- not used
+    sel => selA,  -- TODO: control unit
+    dataout => a
+    );
+    
+inst_Mux_A: Mux port map(
+    datain0 => "0000000000000000",
+    datain1 => ram_dataout, -- TODO
+    datain2 => dataOutRegB,
+    datain3 => rom_dataout, -- TODO
+    sel => selA,  -- TODO: control unit
+    dataout => a
+);
  
  inst_ALU: ALU port map(
     a           => a,
