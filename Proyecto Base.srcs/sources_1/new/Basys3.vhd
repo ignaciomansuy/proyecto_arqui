@@ -71,6 +71,12 @@ component Mux
 );
 end component;
 
+component status is
+    Port ( c : in STD_LOGIC;
+           z : in STD_LOGIC;
+           n : in STD_LOGIC;
+           data_out : out STD_LOGIC_VECTOR (2 downto 0));
+end component;
 -- Fin de la declaración de los componentes.
 
 -- Inicio de la declaración de señales.
@@ -89,6 +95,12 @@ signal dataOutRegA                : std_logic_vector(7 downto 0);  -- Señal sali
 signal dataOutRegB                : std_logic_vector(7 downto 0);  -- Señal salida Reg B.  
 
 signal result           : std_logic_vector(7 downto 0);  -- Señales del resultado.
+signal C                : std_logic;
+signal Z                : std_logic;
+signal N                : std_logic;
+signal status_result           : std_logic_vector(3 downto 0);  -- Señales del resultado.
+
+
 
 signal datain           : std_logic_vector(7 downto 0);  -- Señales de datos de entrada a los registros.
 
@@ -155,12 +167,12 @@ inst_REG_B: Reg port map( -- Repárame!
     dataout => a
     );
     
-inst_Mux_A: Mux port map(
+inst_Mux_B: Mux port map(
     datain0 => "0000000000000000",
     datain1 => ram_dataout, -- TODO
     datain2 => dataOutRegB,
     datain3 => rom_dataout, -- TODO
-    sel => selA,  -- TODO: control unit
+    sel => selB,  -- TODO: control unit
     dataout => a
 );
  
@@ -168,11 +180,18 @@ inst_Mux_A: Mux port map(
     a           => a,
     b           => b,
     sop         => sw(15 downto 13),
-    c           => led(15),
-    z           => led(14),
-    n           => led(13),
+    c           => C,
+    z           => Z,
+    n           => N,
     result      => result
     );
+   
+inst_status: status port map(
+    c => C,
+    z => Z,
+    n => N,
+    data_out => status_result
+);
 
 -- Intancia de Display_Controller.        
 inst_Display_Controller: Display_Controller port map(
