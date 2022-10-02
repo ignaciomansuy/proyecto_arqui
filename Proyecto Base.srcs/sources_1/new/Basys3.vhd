@@ -43,8 +43,8 @@ component Reg -- No Tocar
         load        : in    std_logic;
         up          : in    std_logic;
         down        : in    std_logic;
-        datain      : in    std_logic_vector (7 downto 0);
-        dataout     : out   std_logic_vector (7 downto 0)
+        datain      : in    std_logic_vector (15 downto 0);
+        dataout     : out   std_logic_vector (15 downto 0)
           );
     end component;
 
@@ -85,12 +85,12 @@ signal dis_d            : std_logic_vector(3 downto 0);  -- Señales de salida al
 signal a                : std_logic_vector(15 downto 0);  -- Señal primer operador    
 signal b                : std_logic_vector(15 downto 0);  -- Señal segundo operador.     
 
-signal dataOutRegA                : std_logic_vector(7 downto 0);  -- Señal salida Reg A.    
-signal dataOutRegB                : std_logic_vector(7 downto 0);  -- Señal salida Reg B.  
+signal dataOutRegA                : std_logic_vector(15 downto 0);  -- Señal salida Reg A.    
+signal dataOutRegB                : std_logic_vector(15 downto 0);  -- Señal salida Reg B.  
 
 signal result           : std_logic_vector(7 downto 0);  -- Señales del resultado.
 
-signal datain           : std_logic_vector(7 downto 0);  -- Señales de datos de entrada a los registros.
+signal datain           : std_logic_vector(15 downto 0);  -- Señales de datos de entrada a los registros.
 
 signal datainMuxA           : std_logic_vector(15 downto 0);
 signal datainMuxB           : std_logic_vector(15 downto 0);
@@ -126,7 +126,7 @@ with btn(0) select
 
 -- Inicio de declaración de instancias.
 
-inst_REG_A: Reg port map( -- Repárame!
+inst_REG_A: Reg port map( -- !
     clock       => d_btn(2),
     clear       => '0',
     load        => '1',
@@ -136,7 +136,7 @@ inst_REG_A: Reg port map( -- Repárame!
     dataout     => dataOutRegA
     );
     
-inst_REG_B: Reg port map( -- Repárame!
+inst_REG_B: Reg port map( -- !
     clock       => d_btn(3),
     clear       => '0',
     load        => '1',
@@ -146,15 +146,7 @@ inst_REG_B: Reg port map( -- Repárame!
     dataout     => dataOutRegB
     );
     
- inst_Mux_A: Mux port map(
-    datain0 => "0000000000000000",
-    datain1 => "0000000000000001",
-    datain2 => dataOutRegA,
-    datain3 => "0000000000000000", -- not used
-    sel => selA,  -- TODO: control unit
-    dataout => a
-    );
-    
+-- Se borró el mux repetido    
 inst_Mux_A: Mux port map(
     datain0 => "0000000000000000",
     datain1 => ram_dataout, -- TODO
