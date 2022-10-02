@@ -71,6 +71,15 @@ component Mux
 );
 end component;
 
+component PC 
+    Port ( count_in : in STD_LOGIC_VECTOR (11 downto 0);
+           rom_adress : out STD_LOGIC_VECTOR (11 downto 0);
+           loadPC : in STD_LOGIC;
+           clear : in STD_LOGIC;
+           clock : in STD_LOGIC
+);
+end component;
+
 -- Fin de la declaración de los componentes.
 
 -- Inicio de la declaración de señales.
@@ -164,7 +173,7 @@ inst_Mux_A: Mux port map(
     dataout => a
 );
  
- inst_ALU: ALU port map(
+inst_ALU: ALU port map(
     a           => a,
     b           => b,
     sop         => sw(15 downto 13),
@@ -173,6 +182,14 @@ inst_Mux_A: Mux port map(
     n           => led(13),
     result      => result
     );
+ 
+inst_PC: PC port map(
+    count_in    => rom_dataout, -- TODO
+    loadPC      => loadPC, -- TODO Control unit
+    clear       => '0',
+    clock       => '0', -- TODO
+    rom_adress  => 
+);
 
 -- Intancia de Display_Controller.        
 inst_Display_Controller: Display_Controller port map(
