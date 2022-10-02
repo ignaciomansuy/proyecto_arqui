@@ -10,13 +10,13 @@ entity Reg is
            load     : in  std_logic;                        -- Señal de carga.
            up       : in  std_logic;                        -- Señal de subida.
            down     : in  std_logic;                        -- Señal de bajada.
-           datain   : in  std_logic_vector (7 downto 0);   -- Señales de entrada de datos.
-           dataout  : out std_logic_vector (7 downto 0));  -- Señales de salida de datos.
+           datain   : in  std_logic_vector (15 downto 0);   -- Señales de entrada de datos.
+           dataout  : out std_logic_vector (15 downto 0));  -- Señales de salida de datos.
 end Reg;
 
 architecture Behavioral of Reg is
 
-signal reg : std_logic_vector(7 downto 0) := (others => '0'); -- Señales del registro. Parten en 0.
+signal reg : std_logic_vector(15 downto 0) := (others => '0'); -- Señales del registro. Parten en 0.
 
 begin
 
